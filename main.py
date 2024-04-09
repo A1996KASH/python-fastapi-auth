@@ -11,19 +11,19 @@ class Item(BaseModel):
 
 app.include_router(item_router, prefix="/v1")
 
-@app.get("/")
+@app.get("/v1/hello")
 def read_root():
     return {"Hello": "World"}
-
-@app.post("/items/")
+## add prefix to the path
+@app.post("/v1/items/")
 def create_item(item: Union[str, int]):
     return {"item": item}
 
-@app.put("/items2/{item_id}")
+@app.put("/v1/items/{item_id}")
 def create_item2(item_id, item: Item):
     return {"item": item, "item_id": item_id}
 
-@app.post("/items/")
+@app.post("/v1/items/")
 def create_item3(item: Item):
     return item
 
